@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.sql.SQLException;
 
 /*
- * 	JDBC app to get Employee details whose having Nth highest salary
+ * 	JDBC app to get Employee details whose having Nth highest salary using co-related SubQuery
  * 	Version :: 1.O
  * 	Author :: imshyam
  */
@@ -47,7 +47,10 @@ public class SelectNthSAL {
 				st = con.createStatement();
 			
 			//Prepare SQL Query
+			//SELECT * FROM (SELECT EMPNO,ENAME,JOB,SAL, DENSE_RANK()OVER(ORDER BY SAL DESC) R FROM EMP) WHERE R=&n;
+			
 			//SELECT E1.EMPNO,E1.ENAME,E1.JOB,E1.SAL FROM EMP E1 WHERE 1=(SELECT COUNT(DISTINCT SAL) FROM EMP E2 WHERE E2.SAL>E1.SAL)
+			
 			String query = "SELECT E1.EMPNO,E1.ENAME,E1.JOB,E1.SAL FROM EMP E1 WHERE "+nth+"=(SELECT COUNT(DISTINCT SAL) FROM EMP E2 WHERE E2.SAL>E1.SAL)";
 			System.out.println(query);
 			

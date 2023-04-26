@@ -44,7 +44,8 @@ public class SelectCountOnStudentMysql {
 			//Process the ResultSet (0 or 1 record)
 			if(rs != null) {
 				rs.next();
-				int count = rs.getInt(1);
+				//int count = rs.getInt(1);
+				int count = rs.getInt("count(*)");
 				System.out.println("Records Count in Student DB Table: "+count);
 			}//if
 		}//try
