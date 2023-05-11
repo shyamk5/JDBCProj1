@@ -36,9 +36,23 @@ public class DateValuesConversion {
 		//if my String date value is having the pattern of YYYY-MM-dd then it is not required to convert into java.util.Date
 		//directly we can convert it into java.sql.Date
 		
-		String sqldt = "1990-06-01"; //yyyy-mm-dd
+		String sqldt = "1990-08-10"; //yyyy-mm-dd
 		java.sql.Date sqlDate = java.sql.Date.valueOf(sqldt);
 		System.out.println("SQL Date:: "+sqlDate);
+		
+		//Convert java.sql.Date class obj to java.util.Date class obj
+		java.util.Date ud3 = sqlDate;
+		//new way
+		java.util.Date ud4 = new java.util.Date(sqlDate.getTime());
+		System.out.println("new util Date:: "+ud3);
+		System.out.println("new util Date:: "+ud4);
+		
+		//Converting java.sql.Date class obj (or) java.util.Date class obj to String date values
+		SimpleDateFormat sdf4 = new SimpleDateFormat("dd-MMM-YY");
+		String s4 = sdf4.format(sqlDate);//java.sql.Date
+		String s5 = sdf4.format(ud3);//java.util.Date
+		System.out.println("String Date value:: "+s4);
+		System.out.println("String Date value:: "+s5);
 	}
 
 }
