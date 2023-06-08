@@ -204,7 +204,7 @@ public class GUIScrollFrameTest extends JFrame implements ActionListener,WindowL
 		catch(SQLException se) {
 			se.printStackTrace();
 		}
-	}
+	}//windowClosing
 
 	@Override
 	public void windowClosed(WindowEvent e) {
