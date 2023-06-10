@@ -20,7 +20,8 @@ import javax.swing.JTextField;
 public class GUI_Login_App extends JFrame implements ActionListener, WindowListener {
 
 	JLabel uname,pwd,status;
-	JTextField userField,updateStatus, pwdField;
+	JTextField userField,updateStatus;
+	JPasswordField pwdField;
 	JButton login;
 	
 	Connection con = null;
@@ -46,7 +47,7 @@ public class GUI_Login_App extends JFrame implements ActionListener, WindowListe
 		//for password
 		pwd = new JLabel("Password");
 		add(pwd);
-		pwdField = new JTextField(16);
+		pwdField = new JPasswordField(20);
 		add(pwdField);
 		
 		//login button
@@ -103,8 +104,9 @@ public class GUI_Login_App extends JFrame implements ActionListener, WindowListe
 			System.out.println("Login button clicked");
 			try {
 				//set values to Query param
+				String password = String.valueOf(pwdField.getPassword());
 				ps.setString(1, userField.getText());
-				ps.setString(2, pwdField.getText());
+				ps.setString(2, password);
 				rs = ps.executeQuery();
 				
 				if(rs != null) {
