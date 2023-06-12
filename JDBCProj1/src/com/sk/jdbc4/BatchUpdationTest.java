@@ -12,8 +12,8 @@ public class BatchUpdationTest {
 		try(Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","IMSHYAM","URVIL");
 				Statement st = con.createStatement();
 				) {
-			st.addBatch("INSERT INTO TEST1 VALUES(1021,'SHYAM')");
-			st.addBatch("UPDATE TEST1 SET SNAME='PRADEEP' WHERE SNO=1001");
+			st.addBatch("INSERT INTO TEST1 VALUES(1,'A')");
+			st.addBatch("UPDATE TEST1 SET SNAME='PRADEEP' WHERE SNO=2");
 			st.addBatch("DELETE FROM TEST1 WHERE SNO=1");
 			
 			//execute the batch 
